@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Alegreya+SC|Arbutus+Slab|Bree+Serif|Cinzel|Cormorant+Garamond|Crete+Round|DM+Serif+Text|Domine|Nanum+Myeongjo|Neuton|Playfair+Display+SC|Solway|Ultra|Vidaloka|Zilla+Slab&display=swap");
 
+
 *,
 *::before,
 *::after {
- margin: 0;
  padding: 0;
+ margin: 0;
  box-sizing: inherit;
 }
 
-/* Variables */
+/* Root Variables */
 
 :root {
-
  /* fonts */
 
  --bree-serif: "Bree Serif", serif;
@@ -65,7 +65,7 @@
  --black: #000;
 }
 
-/* Universal Styles */
+/* Universal styles */
 
 html {
  font-size: 10px;
@@ -93,21 +93,19 @@ p {
 .btn {
  border-radius: 2rem;
  padding: 1rem 2rem;
- background: var(--neon-carrot);
- color: var(--black);
- border: 2px solid var(--black);
- text-align: center;
+ background-color: var(--catawba);
+ color: var(--white);
+ font-size: .9rem;
+ font-weight: 400;
  display: inline-block;
- margin-top: 2rem;
+ margin-top: 3rem;
  text-transform: uppercase;
  letter-spacing: .2rem;
  transition: 420ms ease;
 }
 
 .btn:hover {
- background: var(--coral-red);
- color: var(--white);
- border: 2px solid var(--white);
+ background-color: var(--maastricht-blue);
 }
 
 section {
@@ -115,9 +113,9 @@ section {
 }
 
 body {
- background: var(--white);
- font-family: var(--domine-serif);
+ font-family: var(--crete-round);
 }
+
 
 /* Header */
 
@@ -137,41 +135,42 @@ header {
  margin: 0 auto;
 }
 
-.menu__icons {
- font-size: 3.5rem;
- color: var(--black);
- cursor: pointer;
- transition: 420ms ease;
-}
-
-.menu__icons:hover {
- color: var(--coral-red);
+nav {
+ width: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 0 1rem;
 }
 
 .nav__brand {
  width: 15rem;
 }
 
-nav {
- width: 100%;
- display: flex;
- align-items: center;
- justify-content: space-between;
- margin: 1rem 0;
+.menu__icons {
+ font-size: 3.5rem;
+ color: var(--white);
+ cursor: pointer;
+ transition: 420ms ease;
+}
+
+.menu__icons:hover {
+ color: var(--catawba);
 }
 
 .nav__list {
  width: 25rem;
  height: 100vh;
- background: var(--light-blue);
+ background: var(--white);
+ box-shadow: -2px 0px 10px 1px #aaaaaa;
  position: fixed;
  top: 0;
  right: -26rem;
  opacity: 0;
  display: flex;
  flex-direction: column;
- align-items: center;
  justify-content: center;
+ align-items: center;
  transition: all 630ms ease-in-out, opacity 810ms ease;
  z-index: 1300;
 }
@@ -181,12 +180,6 @@ nav {
  opacity: 1;
 }
 
-.close {
- position: absolute;
- top: 2rem;
- left: 2rem;
-}
-
 .nav__item {
  margin: 1.5rem 0;
 }
@@ -194,12 +187,45 @@ nav {
 .nav__link {
  font-size: 1.6rem;
  text-transform: uppercase;
- color: var(--white);
+ color: var(--maastricht-blue);
  transition: 420ms ease;
 }
 
 .nav__link:hover {
- color: var(--neon-carrot);
+ color: var(--catawba);
+}
+
+.close {
+ color: var(--maastricht-blue);
+ position: absolute;
+ top: 2rem;
+ left: 2rem;
+}
+
+@media screen and (min-width: 600px) {
+
+ .nav__list {
+  width: initial;
+  height: initial;
+  background: transparent;
+  box-shadow: initial;
+  position: initial;
+  top: initial;
+  right: initial;
+  opacity: initial;
+  flex-direction: row;
+  transition: initial;
+ }
+
+ .nav__link {
+  color: var(--white);
+  margin: 0 2rem;
+ }
+
+ .menu__icons {
+  display: none;
+ }
+
 }
 
 /* Hero */
@@ -207,16 +233,16 @@ nav {
 #hero {
  width: 100%;
  height: 80vh;
- position: relative;
  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%), url('../img/boardwalk.jpeg') center no-repeat;
  background-size: cover;
+ position: relative;
 }
 
 .main__message {
  width: 100%;
  max-width: 50rem;
- color: var(--white);
  text-transform: uppercase;
+ color: var(--white);
  transform: translateY(20%);
 }
 
@@ -230,19 +256,20 @@ nav {
 }
 
 .main__message p {
- font-size: 1.6rem;
  text-transform: lowercase;
 }
 
-/* Activities Section */
+/* Activities Grid */
 
 #activities {
  padding: 0;
 }
 
 .activities__heading {
+ width: 100%;
+ padding: 2rem 1rem;
  text-align: center;
- padding: 2rem;
+ margin: 0 auto;
 }
 
 .activities__heading h3 {
@@ -251,7 +278,7 @@ nav {
 
 .activities__heading h1 {
  font-size: 2rem;
- margin: 1rem 0;
+ margin: 1rem;
 }
 
 .activities__heading p {
@@ -261,44 +288,49 @@ nav {
 .activities__grid {
  display: grid;
  grid-template-columns: repeat(auto-fit, minmax(25rem, auto));
- grid-gap: 2rem;
+ grid-gap: 2.5rem;
 }
 
 .activities__grid__item {
- height: 40rem;
  padding: 5rem;
- color: var(--white);
+ height: 40rem;
  border-radius: 2rem;
- position: relative;
+ color: var(--neon-carrot2);
  display: flex;
  flex-direction: column;
  justify-content: center;
+ cursor: pointer;
+ position: relative;
  z-index: 1;
 }
 
 .activities__grid__item::before {
  content: "";
- position: absolute;
  border-radius: 2rem;
  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
  position: absolute;
  top: 0;
- left: 0;
+ right: 0;
  width: 100%;
  height: 100%;
  z-index: -1;
 }
 
-.star__gazing,
-.hiking,
-.camping,
-.flying {
+.star__gazing {
+ background: url('../img/heart-green.jpg') center no-repeat;
+}
+
+.hiking {
+ background: url('../img/heart-green.jpg') center no-repeat;
+}
+
+.camping {
  background: url('../img/heart-green.jpg') center no-repeat;
 }
 
 .activities__grid__item i {
  font-size: 4rem;
- color: var(--dog-rose);
+ color: var(--catawba);
 }
 
 .activities__grid__item h1 {
@@ -312,56 +344,154 @@ nav {
 
 .read__btn {
  border-radius: .2rem;
- padding: .8rem 1.6rem;
+ width: 100%;
+ max-width: 12rem;
+ background-color: var(--pale-aqua);
+ color: var(--white);
  text-align: center;
- max-width: 10rem;
- font-size: 1.3rem;
  display: inline-block;
  margin-top: 1rem;
- background-color: var(--neon-carrot);
- color: var(--white);
+ padding: .8rem 1.6rem;
+ font-size: .9rem;
+ letter-spacing: .2rem;
+ text-transform: uppercase;
  transition: 420ms ease;
 }
 
 .read__btn:hover {
- background-color: var(--dog-rose);
+ background-color: transparent;
+ border: 1px solid var(--white);
 }
 
-/* Social Grid */
+/* Cards Section */
 
-#social {
+#cards {
+ padding: 0;
+}
+
+.cards__heading {
+ width: 100%;
+ padding: 5rem 1rem;
+ text-align: center;
+ margin: 0 auto;
+}
+
+.cards__heading h3 {
+ font-size: 2rem;
+}
+
+.cards__heading h1 {
+ font-size: 3rem;
+ margin: 2rem 0;
+}
+
+.cards__list {
+ margin: -1rem;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+}
+
+.cards__item {
+ padding: 1.5rem;
+ flex-basis: 50%;
+}
+
+.cards__img {
+ background: var(--white);
+ box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.3);
+}
+
+@media screen and (min-width: 698px) {
+ .cards__item {
+  flex-basis: 20%;
+ }
+}
+
+/* Courses Section */
+
+#courses {
+ padding: 0;
+}
+
+.courses__heading {
+ width: 100%;
+ padding: 2rem;
+ text-align: center;
+ margin: 0 auto;
+}
+
+.courses__heading h1 {
+ font-size: 3rem;
+}
+
+.courses__heading p {
  padding: 2rem 0;
 }
 
-.social__heading {
+.courses__item {
+ width: 100%;
+ height: 25rem;
+ color: var(--white);
  text-align: center;
- padding: 2rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
 }
 
-.social__heading h1 {
+.courses__item h1 {
+ font-size: 2.5rem;
+}
+
+.courses__item h3 {
  font-size: 2rem;
- margin: 1rem 0;
+ margin: 1rem;
 }
 
-.social__heading h3 {
- font-size: 1.6rem;
- margin: 1rem 0;
+.courses__item p {
+ font-size: 1.4rem;
+ margin: 1rem;
 }
 
-.social__grid {
- padding: 4rem 0;
- display: grid;
- grid-template-columns: repeat(2, 1fr);
- grid-gap: 2.5rem;
+.courses__btn {
+ border-radius: .2rem;
+ padding: .8rem 1.6rem;
+ width: 100%;
+ max-width: 12rem;
+ font-size: 1.2rem;
+ background-color: transparent;
+ color: var(--white);
+ border: 1px solid var(--white);
+ display: inline-block;
+ margin-top: 2rem;
+ transition: 420ms ease;
 }
 
-.social__img {
- box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+.courses__btn:hover {
+ background-color: var(--white);
+ color: var(--black);
 }
 
-@media screen and (min-width: 700px) {
+.onsite {
+ background: var(--orange);
+}
 
- .social__grid {
-  grid-template-columns: repeat(5, 1fr);
+.remote {
+ background: var(--light-blue);
+}
+
+.remote__pt {
+ background: var(--green);
+}
+
+@media screen and (min-width: 900px) {
+ .courses {
+  display: flex;
+  flex-direction: row;
+ }
+
+ .remote {
+  max-width: 45rem;
  }
 }
